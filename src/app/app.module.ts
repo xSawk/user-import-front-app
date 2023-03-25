@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { UsersComponent } from './modules/users/users.component';
-import { HomeComponent } from './modules/home/home.component';
+
 import { DefaultModule } from './layouts/default/default.module';
 
 @NgModule({
