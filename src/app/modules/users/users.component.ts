@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { map, startWith, switchMap } from 'rxjs';
 import { User } from './model/user';
 import { UsersService } from './users.service';
 
@@ -7,22 +9,29 @@ import { UsersService } from './users.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.sass']
 })
-export class UsersComponent implements OnInit{
+export class UsersComponent implements AfterViewInit{
+  
   
 
-  dataSource: User[] = [];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns: string[] = ["id","name","surname","login"];
+  totalElements: number = 0;
+  dataSource: User[] = [];
 
   constructor(private usersService: UsersService){}
  
  
-  ngOnInit(): void {
-    this.getUsers();
+  ngAfterViewInit(): void {
+    this.paginator.page.pipe(
+      startWith({}),
+      switchMap(() => {
+        return this.usersService.getUsers(this.paginator.pageIndex, this.paginator.pageSize);
+      }),
+      map(data => {
+          this.totalElements = data.totalElements;
+          return data.content;
+      })
+    ).subscribe(data => this.dataSource = data);
   }
-
-  getUsers(){
-    this.usersService.getUsers(0,25)
-    .subscribe(page => this.dataSource = page.content)
-  }
-
+ 
 }
