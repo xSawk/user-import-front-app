@@ -8,7 +8,8 @@ import { ImportComponent } from 'src/app/modules/import/import.component';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FlexLayoutModule,
     MaterialModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DefaultModule { }

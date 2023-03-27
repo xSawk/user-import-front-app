@@ -1,2 +1,6 @@
-<p>Import users from file</p>
-
+<div class="import">
+<form [formGroup]="fileForm" (submit)="uploadFile()">
+    <input type="file" accept="application/json" (change)="onFileChange($event)">
+    <button mat-flat-button color="basic">Upload</button>
+</form>
+</div>
