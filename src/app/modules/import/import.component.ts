@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ImportService } from './import.service';
+import { UploadResponse } from './model/uploadResponse';
 
 @Component({
   selector: 'app-import',
@@ -9,8 +10,12 @@ import { ImportService } from './import.service';
   styleUrls: ['./import.component.sass']
 })
 export class ImportComponent {
+
   file: string | null = null;
   fileForm!: FormGroup;
+  response!: UploadResponse
+
+  importFinished = false;
 
 
   constructor(private formBuilder: FormBuilder,private importService: ImportService){}
@@ -34,10 +39,19 @@ export class ImportComponent {
     let formData = new FormData();
     formData.append('file', this.fileForm.get('file')?.value);
     this.importService.uploadImage(formData)
-      .subscribe(result => this.file = result.filename);
-      console.log(this.file);
-  }
+    .subscribe(result => {
+      this.response = result
+      this.file = result.fileName
+      this.importFinished = true
+      
+    });
+}
+reset() {
+  this.file = null;
+  this.fileForm.reset();
+  const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+  fileInput.value = '';
+}
 
-  
 
 }

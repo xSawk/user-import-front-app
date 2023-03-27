@@ -1,3 +1,5 @@
 export interface UploadResponse{
-    filename: string 
+    fileName: string 
+    uploadDuration: number,
+    size: number
 }
