@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { UsersComponent } from './modules/users/users.component';
-
+import { MatTableModule } from '@angular/material/table';
 import { DefaultModule } from './layouts/default/default.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/material.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { DefaultModule } from './layouts/default/default.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DefaultModule
+    DefaultModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

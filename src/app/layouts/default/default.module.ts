@@ -5,7 +5,8 @@ import { UsersComponent } from 'src/app/modules/users/users.component';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ImportComponent } from 'src/app/modules/import/import.component';
-
+import { MaterialModule } from 'src/app/shared/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { ImportComponent } from 'src/app/modules/import/import.component';
   imports: [
     CommonModule,
     RouterModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MaterialModule,
+    HttpClientModule
   ]
 })
 export class DefaultModule { }
