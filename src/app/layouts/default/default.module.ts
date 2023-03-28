@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -26,7 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     MatPaginatorModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSortModule
+
   ]
 })
 export class DefaultModule { }
