@@ -8,7 +8,6 @@ import { UsersComponent } from './modules/users/users.component';
 import { MatTableModule } from '@angular/material/table';
 import { DefaultModule } from './layouts/default/default.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material.module';
 import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [

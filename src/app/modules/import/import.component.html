@@ -1,14 +1,15 @@
+<div class="container">
 <div class="import">
-<form [formGroup]="fileForm" (submit)="uploadFile()">
-    <input type="file" accept="application/json" (change)="onFileChange($event)">
-    <button mat-flat-button color="basic">Upload</button>
-</form>
-</div>
-
-<div class="statistic" *ngIf="importFinished">
+    <form [formGroup]="fileForm" (submit)="uploadFile()">
+      <input type="file" accept="application/json" (change)="onFileChange($event)">
+      <button mat-raised-button color="primary">Upload</button>
+    </form>
+  </div>
+  
+  <div class="statistic" *ngIf="importFinished">
     <p>File name: {{ response.fileName }}</p>
     <p>Upload duration: {{ response.uploadDuration }} sec</p>
     <p>Rows imported: {{ response.size }}</p>
-    <button mat-flat-button color="basic" routerLink="/users">User List</button>
+    <button mat-raised-button color="primary" routerLink="/users">User List</button>
+  </div>
 </div>
-

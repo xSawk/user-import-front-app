@@ -12,7 +12,14 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
 
-  getUsers(page: number, size: number): Observable<Page<User>>{
-      return this.http.get<Page<User>>(`http://localhost:8080/api/v1/users?page=${page}&size=${size}`);
+  getUsers(page: number, size: number, searchValue: string, sort?: string, direction?: string): Observable<Page<User>> {
+    let queryParams = `page=${page}&size=${size}`;
+    if (searchValue) {
+      queryParams += `&searchValue=${searchValue}`;
+    }
+    if (sort && direction) {
+      queryParams += `&sort=${sort},${direction}`;
+    }
+    return this.http.get<Page<User>>(`http://localhost:8080/api/v1/users?${queryParams}`);
   }
 }
