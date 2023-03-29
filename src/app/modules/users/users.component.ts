@@ -4,24 +4,24 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { map, merge, startWith, switchMap } from 'rxjs';
 import { User } from './model/user';
 import { UsersService } from './users.service';
-import {Md5} from 'ts-md5';
+import { Md5 } from 'ts-md5';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.sass']
 })
-export class UsersComponent implements AfterViewInit{
-  
+export class UsersComponent implements AfterViewInit {
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ["id","name","surname","login"];
+  displayedColumns: string[] = ["id", "name", "surname", "login"];
   totalElements: number = 0;
   dataSource: User[] = [];
   searchValue: string = '';
 
-  constructor(private usersService: UsersService){}
- 
- 
+  constructor(private usersService: UsersService) { }
+
+
   ngAfterViewInit(): void {
     merge(this.paginator.page, this.sort.sortChange)
       .pipe(
@@ -30,7 +30,7 @@ export class UsersComponent implements AfterViewInit{
           if (event.active) {
             this.paginator.pageIndex = 0;
           }
-  
+
           return this.usersService.getUsers(
             this.paginator.pageIndex,
             this.paginator.pageSize,
@@ -53,8 +53,8 @@ export class UsersComponent implements AfterViewInit{
       });
   }
 
-applyFilter(): void {
-  this.paginator.pageIndex = 0;
-  this.ngAfterViewInit();
-}
+  applyFilter(): void {
+    this.paginator.pageIndex = 0;
+    this.ngAfterViewInit();
+  }
 }

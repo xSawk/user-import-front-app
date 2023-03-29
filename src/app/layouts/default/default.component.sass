@@ -1,13 +1,12 @@
 $button-size: 250px
 
-.container 
+.container
   display: flex
   justify-content: center
   align-items: center
   height: 80vh
 
-
-.button 
+.button
   width: $button-size
   margin-right: 15px
   height: $button-size
@@ -17,24 +16,19 @@ $button-size: 250px
   font-size: 2rem
   cursor: pointer
 
-  &--blue 
-    background-color: blue
+  &--blue
+    background-color: #3279a8
     color: white
-  
 
-  &--green 
-    background-color: green
+  &--green
+    background-color: #34a832
     color: white
-  
 
-
-@media screen and (max-width: 600px) 
-  .container 
+@media screen and (max-width: 600px)
+  .container
     flex-direction: column
     height: auto
-  
 
-  .button 
+  .button
     width: 100%
     margin: 10px 0
-  

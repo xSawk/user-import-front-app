@@ -18,40 +18,35 @@ export class ImportComponent {
   importFinished = false;
 
 
-  constructor(private formBuilder: FormBuilder,private importService: ImportService){}
+  constructor(private formBuilder: FormBuilder, private importService: ImportService) { }
 
   ngOnInit(): void {
-      this.fileForm = this.formBuilder.group({
+    this.fileForm = this.formBuilder.group({
       file: ['']
     })
   }
 
 
-  onFileChange(event: any){
-    if(event.target.files.length > 0){
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
       this.fileForm.patchValue({
         file: event.target.files[0]
       });
     }
   }
 
-  uploadFile(){
+  uploadFile() {
     let formData = new FormData();
     formData.append('file', this.fileForm.get('file')?.value);
     this.importService.uploadImage(formData)
-    .subscribe(result => {
-      this.response = result
-      this.file = result.fileName
-      this.importFinished = true
-      
-    });
-}
-reset() {
-  this.file = null;
-  this.fileForm.reset();
-  const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-  fileInput.value = '';
-}
+      .subscribe(result => {
+        this.response = result
+        this.file = result.fileName
+        this.importFinished = true
+
+      });
+  }
+
 
 
 }
