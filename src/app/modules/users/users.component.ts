@@ -12,8 +12,6 @@ import {Md5} from 'ts-md5';
 })
 export class UsersComponent implements AfterViewInit{
   
-  
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   displayedColumns: string[] = ["id","name","surname","login"];

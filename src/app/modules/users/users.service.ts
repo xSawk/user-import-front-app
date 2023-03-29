@@ -13,6 +13,6 @@ export class UsersService {
 
 
   getUsers(page: number, size: number): Observable<Page<User>>{
-      return this.http.get<Page<User>>(`http://localhost:8080/users?page=${page}&size=${size}`);
+      return this.http.get<Page<User>>(`http://localhost:8080/api/v1/users?page=${page}&size=${size}`);
   }
 }

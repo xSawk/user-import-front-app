@@ -12,6 +12,6 @@ export class ImportService {
   constructor(private http: HttpClient) {}
 
   uploadImage(formData: FormData): Observable<UploadResponse> {
-    return this.http.post<UploadResponse>('http://localhost:8080/load', formData);
+    return this.http.post<UploadResponse>('http://localhost:8080/api/v1/users/load', formData);
   }
 }
