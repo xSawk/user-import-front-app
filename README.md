@@ -42,7 +42,7 @@ It consists of three screens:
 
 ### **Backend**
 
-Navigate to the project directory and compile the project using Maven:
+Navigate to the project directory (user-import-backend-app) and compile the project using Maven:
 ```sh
 mvn clean install
 ```  
@@ -65,7 +65,7 @@ The application should now be running at http://localhost:8080
 
 ### **Frontend**
 
-Navigate to the project directory (frontend4system) and install dependencies using npm:
+Navigate to the project directory (user-import-front-app) and install dependencies using npm:
 ```sh
 npm ci
 ```  
