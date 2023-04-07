@@ -1,27 +1,124 @@
-# Frontend4System
+# User Import Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+The application allows for importing user data from a JSON file, saves it to a database, and then displays a list of users with sorting and searching capabilities.
 
-## Development server
+https://user-images.githubusercontent.com/57503560/230596177-5580abaf-98bd-4861-9083-59ee48b1cf77.mp4
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+It consists of three screens:
 
-## Code scaffolding
+- A home page that contains two navigation buttons
+- A page with a form allowing to choose a file for import
+- A page displaying a list in the form of a table with users
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Used Technologies
 
-## Build
+**Backend**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Java 17
+- Spring Boot
+- MySQL
+- JPA/Hibernate
+- Maven 
+- Docker
 
-## Running unit tests
+**Frontend**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Angular
+- Angular Material UI
+- TypeScript
+- HTML5
+- Sass
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Features
 
-## Further help
+- Importing user data from a JSON format file
+- Sorting users in the table by a chosen column (first name, last name, login)
+- Searching for a specific user based on their first name, last name, or login
+- Anonymizing data by adding an MD5 hash to last names
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# Installation
+
+### **Backend**
+
+Navigate to the project directory and compile the project using Maven:
+```sh
+mvn clean install
+```  
+Configure or run a container for MySQL using Docker Compose:
+```sh
+Default configuration
+
+spring.datasource.url=jdbc:mysql://localhost:3306/db_test
+spring.datasource.username=root
+spring.datasource.password=qwerty
+``` 
+```sh
+or docker-compose up
+```  
+Run the application:
+```sh
+mvn spring-boot:run
+```  
+The application should now be running at http://localhost:8080
+
+### **Frontend**
+
+Navigate to the project directory (frontend4system) and install dependencies using npm:
+```sh
+npm ci
+```  
+Run the application:
+```sh
+npm start
+```  
+The application should now be running at http://localhost:4200
+
+# User Data Files
+
+To generate data, I used the tool https://json-generator.com/. Sample files are located in the data/examples folder, and they should be selected from this location.
+
+```sh
+  {
+
+      "users": [
+        '{{repeat(60000)}}',
+        {
+          "name": "name{{index()}}",
+          "surname": "surname{{index()}}",
+          "login": "login{{index()}}"
+        }
+      ]
+    
+  }
+```  
+The file structure looks as follows:
+```sh
+{
+  "users": [
+    {
+      "name": "name0",
+      "surname": "surname0",
+      "login": "login0"
+    },
+    {
+      "name": "name1",
+      "surname": "surname1",
+      "login": "login1"
+    },
+    ...
+    {
+      "name": "nameN",
+      "surname": "surnameN",
+      "login": "loginN"
+    }
+  ]
+}
+    
+
+```  
+
+
+
+
